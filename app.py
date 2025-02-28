@@ -7,5 +7,6 @@ from datetime import datetime, timezone
 # Create Flask app instance 
 app = Flask(__name__) 
 
-db = SQLAlchemy 
+
+
 
