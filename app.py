@@ -39,6 +39,24 @@ def index():
     tasks = Task.query.order_by()
     return render_template('index.html', tasks=tasks)
 
+# Create a route for deleting 
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Task.query.get_or_404(id)
+    db.session.delete(task_to_delete)
+    db.session.commit()
+    return redirect('/')
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    task = Task.query.get_or_404(id)
+    if request.method == 'POST':
+         task.content = request.form['content']
+         db.session.commit()
+         return redirect('/')
+    return render_template('update.html', task=task)
+
+
 # Create the database inastance in main method 
 if __name__ == "__main__": 
     with app.app_context():

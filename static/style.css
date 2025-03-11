@@ -1,7 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
 html, body {
-    background-color: lightpink;
+    background-color: #F9F9F9;
+    background-image: "lib.jpg";
     color: #333333;
     margin: 0;
     padding: 0; 
     height: 100%; 
+}
+
+.background-image{
+    background-image: (rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("images/Lib.png");
+} 
+
+h1 {
+    font-family: 'Inter', sans-serif;
+}
+h2 {
+    font-family: 'Inter', sans-serif;
+    margin: -5px;
+}
+
+h3 {
+        font-family: 'Inter', sans-serif;
+}
+
+p {
+        font-family: 'Inter', sans-serif;
 }
