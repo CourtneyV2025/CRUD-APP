@@ -2,29 +2,29 @@
 
 html, body {
     background-color: #F9F9F9;
-    background-image: "lib.jpg";
-    color: #333333;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('images/Lib.jpg');
+    background-size: 100%;
+    color: white;
     margin: 0;
     padding: 0; 
-    height: 100%; 
 }
-
-.background-image{
-    background-image: (rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url("images/Lib.png");
-} 
 
 h1 {
     font-family: 'Inter', sans-serif;
+    color: white;
 }
 h2 {
     font-family: 'Inter', sans-serif;
     margin: -5px;
+    color: white;
 }
 
 h3 {
-        font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
+    color: white;
 }
 
 p {
-        font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif;
+    color: white;
 }
