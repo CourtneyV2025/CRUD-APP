@@ -11,6 +11,39 @@ class Task(db.Model):
     content = db.Column(db.String(200), nullable=False)
     date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
+@app.route('/checkout')
+def checkout_page():
+    return render_template('checkout.html')
+
+@app.route('/return')
+def return_page():
+    return render_template('return.html')
+
+@app.route('/library')
+def library():
+    return render_template('library.html')
+
+@app.route('/submit', methods=['POST'])
+def add_task():
+     task_content = request.form['content']
+     new_task = Task(content=task_content)
+     db.session.add(new_task)
+     db.session.commit()
+     return render_template('return.html')
+
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+    task = Task.query.get_or_404(id)
+    if request.method == 'POST':
+        task.content = request.form['content']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue updating your task'
+    else:
+        return render_template('update.html', task=task)
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -25,31 +58,6 @@ def index():
     else:
         tasks = Task.query.order_by(Task.date_created).all()
         return render_template('index.html', tasks=tasks)
-
-@app.route('/checkout')
-def checkout_page():
-    return render_template('checkout.html')
-
-@app.route('/return')
-def return_page():
-    return render_template('return.html')
-
-@app.route('/library')
-def library():
-    return render_template('library.html')
-
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
-def update(id):
-    task = Task.query.get_or_404(id)
-    if request.method == 'POST':
-        task.content = request.form['content']
-        try:
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue updating your task'
-    else:
-        return render_template('update.html', task=task)
 
 @app.route('/delete/<int:id>')
 def delete(id):

@@ -11,8 +11,8 @@
     <div class="navbar">
         <a href="{{ url_for('index') }}" class="navbar-brand">Courtney's Library</a>
         <a href="{{url_for('checkout_page')}}" class="'navbar-item">Checkout</a>
-        <a href="{{ url_for('return_page') }}" class="navbar-item">Return</a>
-        <a href="{{ url_for('library') }}" class="navbar-item">Library</a>
+        <a href="{{url_for('return_page')}}" class="navbar-item">Return</a>
+        <a href="{{url_for('library')}}" class="navbar-item">Library</a>
     </div>
     <div class="body-content">
         {% block content %}
