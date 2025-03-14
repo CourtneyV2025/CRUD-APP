@@ -1,30 +1,191 @@
+/* Flint helped me style some of the elements */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
 
 html, body {
+    font-family: 'Inter', sans-serif;
     background-color: #F9F9F9;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('images/Lib.jpg');
-    background-size: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('../static/images/Lib.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
     color: white;
     margin: 0;
-    padding: 0; 
+    padding: 0;
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    font-family: 'Inter', sans-serif;
+    color: white;
 }
 
 h1 {
-    font-family: 'Inter', sans-serif;
-    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
 }
+
 h2 {
-    font-family: 'Inter', sans-serif;
-    margin: -5px;
-    color: white;
+    font-size: 2rem;
+    margin: 1rem 0;
 }
 
 h3 {
-    font-family: 'Inter', sans-serif;
-    color: white;
+    font-size: 1.5rem;
+    margin: 0.8rem 0;
 }
 
 p {
-    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.body-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    min-height: calc(100vh - 120px);
+}
+
+.navbar {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-right: auto;
+}
+
+.navbar-item {
+    margin-left: 1.5rem;
+    font-weight: 400;
+}
+
+.navbar a {
     color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+}
+
+form {
+    margin: 1.5rem 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    border-radius: 5px;
+}
+
+input[type="text"], input[type="email"], textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-family: 'Inter', sans-serif;
+}
+
+button, input[type="submit"] {
+    background-color: #4a69bd;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #3c58a8;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-bottom: 0.5rem;
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li a {
+    color: #271300;
+    text-decoration: none;
+    margin-left: 0.5rem;
+}
+
+li a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.book-image{
+    width: 30%;
+    padding: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.book-image img{
+    width: 100%;
+    height: auto; 
+    border-radius: 3px;
+}
+
+.image-caption {
+    margin-top: 0.8em;
+    margin-bottom: 0;
+}
+
+.book-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .navbar-item {
+        margin: 0.5rem 0 0 0;
+    }
+    
+    .body-content {
+        padding: 1rem;
+    }
+
+    .book-row{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-image{
+        width: 90%;
+        margin-bottom: 1.5rem;
+    }
 }

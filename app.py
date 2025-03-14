@@ -1,31 +1,18 @@
-from flask import Flask, render_template, request, redirect 
-from flask_sqlalchemy import SQLAlchemy 
-from datetime import datetime, timezone 
+from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 
-# Create Flask app instance 
 app = Flask(__name__)
-
-# Create SQLite database instance
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///task.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 db = SQLAlchemy(app)
 
-# Define model of a to do list TASK 
 class Task(db.Model):
-    # db.Column is a column in the database
-    # also specify data type of that key 
-    # PICK ONE to be the "primary_key"
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.now(timezone.utc))
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # String representation of the object 
-    def __repr__(self):
-        return f'<Task {self.id}>'
-
-# Flask route for displaying all tasks 
 @app.route('/', methods=['GET', 'POST'])
-def index(): 
-    # ADD new Task to database
+def index():
     if request.method == 'POST':
         task_content = request.form['content']
         new_task = Task(content=task_content)
@@ -35,30 +22,52 @@ def index():
             return redirect('/')
         except:
             return 'There was an issue adding your task'
-    # SELECT all task objects from database
-    tasks = Task.query.order_by()
-    return render_template('index.html', tasks=tasks)
+    else:
+        tasks = Task.query.order_by(Task.date_created).all()
+        return render_template('index.html', tasks=tasks)
 
-# Create a route for deleting 
-@app.route('/delete/<int:id>')
-def delete(id):
-    task_to_delete = Task.query.get_or_404(id)
-    db.session.delete(task_to_delete)
-    db.session.commit()
-    return redirect('/')
+@app.route('/checkout')
+def checkout_page():
+    return render_template('checkout.html')
+
+@app.route('/return')
+def return_page():
+    return render_template('return.html')
+
+@app.route('/library')
+def library():
+    return render_template('library.html')
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
     task = Task.query.get_or_404(id)
     if request.method == 'POST':
-         task.content = request.form['content']
-         db.session.commit()
-         return redirect('/')
-    return render_template('update.html', task=task)
+        task.content = request.form['content']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue updating your task'
+    else:
+        return render_template('update.html', task=task)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Task.query.get_or_404(id)
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was a problem deleting that task'
 
-# Create the database inastance in main method 
-if __name__ == "__main__": 
+@app.route("/api/data")
+def get_data():
+    # displays data file returned from an API call
+    # can do more Python work to format this later
+    return app.send_static_file("data.json")
+
+if __name__ == "__main__":
     with app.app_context():
-        db.create_all() 
-    app.run(host="0.0.0.0", port=5421, debug=True)
+        db.create_all()
+    app.run(debug=True)

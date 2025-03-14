@@ -3,11 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}" />
-    </head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}" />
     {% block head %}{% endblock %}
 </head>
 <body>
-    {% block body %}{% endblock %}
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="navbar-brand">Courtney's Library</a>
+        <a href="{{url_for('checkout_page')}}" class="'navbar-item">Checkout</a>
+        <a href="{{ url_for('return_page') }}" class="navbar-item">Return</a>
+        <a href="{{ url_for('library') }}" class="navbar-item">Library</a>
+    </div>
+    <div class="body-content">
+        {% block content %}
+        {% endblock %}
+        <hr/>
+        <footer>
+            <p>Courtney E Valis &copy; 2025</p>
+        </footer>
+    </div>
 </body>
 </html>

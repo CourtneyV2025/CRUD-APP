@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Coco's Literary Lounge</title>
+{% endblock %}
+{% block content %}
+<h1>Browse the library!</h1>
+<h2>Find a book to check out!</h2>
+
+<div class="library-content">
+    <div class="book-row">
+        <div class="book-image">
+            <img src="{{ url_for('static', filename='images/ace.jpg') }}" alt="Book 1">
+            <p class="image-caption">A Thriller Novel</p>
+        </div>
+        <div class="book-image">
+            <img src="{{ url_for('static', filename='images/citr.jpg') }}" alt="Book 2">
+            <p class="image-caption">A Young Adult Novel</p>
+        </div>
+        <div class="book-image">
+            <img src="{{ url_for('static', filename='images/frankenstien.jpg') }}" alt="Book 3">
+            <p class="image-caption">A Science Ficton Novel</p>
+        </div>
+         <div class="book-image">
+            <img src="{{ url_for('static', filename='images/lotf.jpg') }}" alt="Book 1">
+            <p class="image-caption">A Young Adult Novel</p>
+         </div>
+        <div class="book-image">
+            <img src="{{ url_for('static', filename='images/grenade.jpg') }}" alt="Book 1">
+            <p class="image-caption">A Fiction Novel</p>
+        </div>
+        <div class="book-image">
+            <img src="{{ url_for('static', filename='images/tkam.jpg') }}" alt="Book 1">
+            <p class="image-caption">A Thriller Novel</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
