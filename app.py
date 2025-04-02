@@ -23,26 +23,21 @@ def return_page():
 def library():
     return render_template('library.html')
 
-@app.route('/submit', methods=['POST'])
-def add_task():
+@app.route('/return', methods=['POST'])
+def return_book():
      task_content = request.form['content']
      new_task = Task(content=task_content)
      db.session.add(new_task)
      db.session.commit()
      return render_template('return.html')
 
-@app.route('/update/<int:id>', methods=['GET', 'POST'])
-def update(id):
-    task = Task.query.get_or_404(id)
-    if request.method == 'POST':
-        task.content = request.form['content']
-        try:
-            db.session.commit()
-            return redirect('/')
-        except:
-            return 'There was an issue updating your task'
-    else:
-        return render_template('update.html', task=task)
+@app.route('/checkout', methods=['POST'])
+def checkout_book():
+     task_content = request.form['content']
+     new_task = Task(content=task_content)
+     db.session.add(new_task)
+     db.session.commit()
+     return render_template('checkout.html')
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
