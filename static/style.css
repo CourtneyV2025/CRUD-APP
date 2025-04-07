@@ -148,7 +148,7 @@ footer {
 .book-image{
     width: 100%; 
     padding: 1rem;
-    border-radius: 5px;
+    border-radius: 3px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
