@@ -13,11 +13,13 @@ class Task(db.Model):
 
 @app.route('/checkout')
 def checkout_page():
-    return render_template('checkout.html')
+    tasks = Task.query.order_by(Task.date_created).all()
+    return render_template('checkout.html', tasks=tasks)
 
 @app.route('/return')
 def return_page():
-    return render_template('return.html')
+    tasks = Task.query.order_by(Task.date_created).all()
+    return render_template('return.html', tasks=tasks)
 
 @app.route('/library')
 def library():
@@ -25,19 +27,21 @@ def library():
 
 @app.route('/return', methods=['POST'])
 def return_book():
-     task_content = request.form['content']
-     new_task = Task(content=task_content)
-     db.session.add(new_task)
-     db.session.commit()
-     return render_template('return.html')
+    task_content = request.form['content']
+    new_task = Task(content=task_content)
+    db.session.add(new_task)
+    db.session.commit()
+    tasks = Task.query.order_by(Task.date_created).all()
+    return render_template('return.html', tasks=tasks)
 
 @app.route('/checkout', methods=['POST'])
 def checkout_book():
-     task_content = request.form['content']
-     new_task = Task(content=task_content)
-     db.session.add(new_task)
-     db.session.commit()
-     return render_template('checkout.html')
+    task_content = request.form['content']
+    new_task = Task(content=task_content)
+    db.session.add(new_task)
+    db.session.commit()
+    tasks = Task.query.order_by(Task.date_created).all()
+    return render_template('checkout.html', tasks=tasks)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
