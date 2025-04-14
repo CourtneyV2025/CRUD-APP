@@ -9,47 +9,69 @@ Coco's Literary Lounge
 <div class="library-content">
     <div class="book-row">
         <div class="book-image">
+            <a href="#popup-ace">
             <img src="{{ url_for('static', filename='images/ace.jpg') }}" alt="Book 1">
+            </a>
             <p class="image-caption">A Thriller Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-citr">
             <img src="{{ url_for('static', filename='images/citr.jpg') }}" alt="Book 2">
+            </a>
             <p class="image-caption">A Young Adult Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-frankenstien">
             <img src="{{ url_for('static', filename='images/frankenstien.jpg') }}" alt="Book 3">
+            </a>
             <p class="image-caption">A Science Ficton Novel</p>
         </div>
          <div class="book-image">
+            <a href="#popup-lotf">
             <img src="{{ url_for('static', filename='images/lotf.jpg') }}" alt="Book 4">
+            </a>
             <p class="image-caption">A Young Adult Novel</p>
          </div>
         <div class="book-image">
+            <a href="#popup-grenade">
             <img src="{{ url_for('static', filename='images/grenade.jpg') }}" alt="Book 5">
+            </a>
             <p class="image-caption">A Fiction Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-tkam">
             <img src="{{ url_for('static', filename='images/tkam.jpg') }}" alt="Book 6">
             <p class="image-caption">A Thriller Novel</p>
         </div>
+        </a>
         <div class="book-image">
+            <a href="#popup-tfios">
             <img src="{{ url_for('static', filename='images/tfios.jpg') }}" alt="Book 7">
+        </a>
             <p class="image-caption">A Young Adult & Romance Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-pap"></a>
             <img src="{{ url_for('static', filename='images/pap.jpg') }}" alt="Book 8">
+            </a>
             <p class="image-caption">A Romance Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-jaws">
             <img src="{{ url_for('static', filename='images/jaws.jpg') }}" alt="Book 9">
+            </a>
             <p class="image-caption">A Thriller Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-gg">
             <img src="{{ url_for('static', filename='images/gg.jpg') }}" alt="Book 10">
+            </a>
             <p class="image-caption">A Literary Ficton Novel</p>
         </div>
         <div class="book-image">
+            <a href="#popup-LTT">
             <img src="{{ url_for('static', filename='images/LTT.jpg') }}" alt="Book 10">
+        </a>
             <p class="image-caption">A Self-Help Novel</p>
         </div>
         <div class="book-image">
@@ -154,5 +176,35 @@ Coco's Literary Lounge
 
     </div>
 </div>
+
+
+<!--Checking out what chat says to do for my popups-->
+<!-- Popup for Ace -->
+<div id="popup-ace" class="popup">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <h3>Ace</h3>
+      <p><a href="/checkout?title=Ace">Checkout</a> | <a href="/return?title=Ace">Return</a></p>
+    </div>
+  </div>
+  
+  <!-- Popup for CITR -->
+  <div id="popup-citr" class="popup">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <h3>The Catcher in the Rye</h3>
+      <p><a href="/checkout?title=CITR">Checkout</a> | <a href="/return?title=CITR">Return</a></p>
+    </div>
+  </div>
+  
+  <!-- Popup for Frankenstein -->
+  <div id="popup-frankenstein" class="popup">
+    <div class="popup-content">
+      <a href="#" class="close">&times;</a>
+      <h3>Frankenstein</h3>
+      <p><a href="/checkout?title=Frankenstein">Checkout</a> | <a href="/return?title=Frankenstein">Return</a></p>
+    </div>
+  </div>
+  
 
 {% endblock %}
