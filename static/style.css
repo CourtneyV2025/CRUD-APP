@@ -243,7 +243,8 @@ footer {
 }
 
 .popup-content {
-  background: white;
+  background-color: #F9F9F9;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), url('../static/images/Lib.jpg');a2U`   fcv
   padding: 20px;
   border-radius: 8px;
   text-align: center;
